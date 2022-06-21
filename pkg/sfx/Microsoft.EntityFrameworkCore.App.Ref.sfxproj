@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Sdk Name="Microsoft.DotNet.Arcade.Sdk" />
+  <Sdk Name="Microsoft.DotNet.SharedFramework.Sdk" />
+
+  <PropertyGroup>
+    <PublishReadyToRun>false</PublishReadyToRun>
+    <IsShipping Condition="'$(RuntimeIdentifier)' != 'any'">true</IsShipping>
+    <GenerateInstallers Condition="'$(RuntimeIdentifier)' != 'any'">true</GenerateInstallers>
+    <IncludeSymbols>false</IncludeSymbols>
+    <ProductBrandPrefix>Microsoft</ProductBrandPrefix>
+    <InstallerName>efcore-targeting-pack</InstallerName>
+  </PropertyGroup>
+
+</Project>

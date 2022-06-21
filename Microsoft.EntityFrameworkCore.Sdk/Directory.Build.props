@@ -1,0 +1,14 @@
+<Project>
+
+  <Import Project="../Directory.Build.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Version>6.0.6</Version>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <PackageTags>EntityFrameworkCore</PackageTags>
+    <Description>.NET SDK to properly use the EntityFrameworkCore framework reference.</Description>
+  </PropertyGroup>
+
+</Project>
