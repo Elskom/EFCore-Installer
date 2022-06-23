@@ -3,7 +3,6 @@
   <Import Project="../../Directory.Build.props" />
 
   <PropertyGroup>
-    <DisableSourceLink>true</DisableSourceLink>
     <AssemblyVersion />
     <SharedFrameworkFriendlyName>EntityFrameworkCore</SharedFrameworkFriendlyName>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

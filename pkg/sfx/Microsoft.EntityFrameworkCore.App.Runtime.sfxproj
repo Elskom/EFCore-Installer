@@ -15,7 +15,7 @@
     <IncludeSymbols>false</IncludeSymbols>
     <!-- We need the symbols from crossgen2. -->
     <IncludeSymbols Condition="'$(RuntimeIdentifier)' != 'any'">true</IncludeSymbols>
-    <ProductBrandPrefix>Microsoft</ProductBrandPrefix>
+    <ProductBrandPrefix>Microsoft EntityFrameworkCore</ProductBrandPrefix>
     <InstallerName>efcore-runtime</InstallerName>
   </PropertyGroup>
 

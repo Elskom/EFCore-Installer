@@ -10,7 +10,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Cosmos" Version="6.0.6" />
     <!-- SourceLink -->
-    <PackageReference Remove="Microsoft.SourceLink.GitHub" />
     <PackageReference Remove="Microsoft.SourceLink.AzureRepos.Git" />
     <PackageReference Include="Microsoft.DotNet.Build.Tasks.Archives" IsImplicitlyDefined="true" Version="*-*" Condition="$(RuntimeIdentifier.StartsWith('linux-')) AND $([MSBuild]::IsOSPlatform('Linux'))">
       <PrivateAssets>all</PrivateAssets>

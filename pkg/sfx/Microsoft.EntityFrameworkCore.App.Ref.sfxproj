@@ -8,7 +8,7 @@
     <IsShipping Condition="'$(RuntimeIdentifier)' != 'any'">true</IsShipping>
     <GenerateInstallers Condition="'$(RuntimeIdentifier)' != 'any'">true</GenerateInstallers>
     <IncludeSymbols>false</IncludeSymbols>
-    <ProductBrandPrefix>Microsoft</ProductBrandPrefix>
+    <ProductBrandPrefix>Microsoft EntityFrameworkCore</ProductBrandPrefix>
     <InstallerName>efcore-targeting-pack</InstallerName>
   </PropertyGroup>
 
