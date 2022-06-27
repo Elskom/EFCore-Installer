@@ -1,9 +1,5 @@
 <Project>
 
-  <PropertyGroup>
-    <UsingEFCoreNetSdk>true</UsingEFCoreNetSdk>
-  </PropertyGroup>
-
   <ItemGroup>
     <KnownFrameworkReference Include="Microsoft.EntityFrameworkCore.App"
                              TargetFramework="net6.0"

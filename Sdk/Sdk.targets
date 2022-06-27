@@ -9,7 +9,7 @@
     <FrameworkReference
             Include="Microsoft.AspNetCore.App"
             IsImplicitlyDefined="true"
-            Condition="'$(DisableImplicitFrameworkReferences)' != 'true' AND '$(UsingMicrosoftNETSdkWeb)' != 'true'" />
+            Condition="'$(DisableImplicitFrameworkReferences)' != 'true' AND !'@(FrameworkReference->AnyHaveMetadataValue('Identity', 'Microsoft.AspNetCore.App'))'" />
     <FrameworkReference
             Include="Microsoft.EntityFrameworkCore.App"
             IsImplicitlyDefined="true"
