@@ -23,6 +23,11 @@ jobs:
       uses: Elskom/build-dotnet@main
       with:
         PUSH: false
+    - name: Clean up temp installer files.
+      run: |
+        del artifacts/packages/Release/Shipping/*.wixpdb
+        del artifacts/packages/Release/Shipping/*-runtime-*.*
+        del artifacts/packages/Release/Shipping/*-targeting-pack-*.*
     - name: Upload artifacts
       uses: actions/upload-artifact@main
       with:
@@ -42,15 +47,6 @@ jobs:
         keep: 0
         names: |
             Microsoft.EntityFrameworkCore.Sdk
-            Microsoft.EntityFrameworkCore.App.Ref
-            Microsoft.EntityFrameworkCore.App.Runtime.win-x86
-            Microsoft.EntityFrameworkCore.App.Runtime.win-x64
-            Microsoft.EntityFrameworkCore.App.Runtime.win-arm64
-            Microsoft.EntityFrameworkCore.App.Runtime.linux-x64
-            Microsoft.EntityFrameworkCore.App.Runtime.linux-arm
-            Microsoft.EntityFrameworkCore.App.Runtime.linux-arm64
-            Microsoft.EntityFrameworkCore.App.Runtime.osx-x64
-            Microsoft.EntityFrameworkCore.App.Runtime.osx-arm64
     - name: Download artifacts
       uses: actions/download-artifact@main
       with:
@@ -61,5 +57,5 @@ jobs:
       run: dotnet nuget push **/*.nupkg -s https://nuget.pkg.github.com/${{ github.repository_owner }} -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate --no-symbols
     - uses: ncipollo/release-action@main
       with:
-        artifacts: "artifacts/packages/Release/Shipping/*.exe,artifacts/packages/Release/Shipping/efcore-shared-framework*.pkg,artifacts/packages/Release/Shipping/*.nupkg,artifacts/packages/Release/Shipping/efcore-shared-framework*.zip,artifacts/packages/Release/Shipping/efcore-shared-framework*.tar.gz"
+        artifacts: "artifacts/packages/Release/Shipping/*.exe,artifacts/packages/Release/Shipping/*.*pkg,artifacts/packages/Release/Shipping/*.zip,artifacts/packages/Release/Shipping/*.tar.gz"
         token: ${{ secrets.GITHUB_TOKEN }}
