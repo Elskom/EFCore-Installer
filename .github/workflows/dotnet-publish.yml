@@ -17,7 +17,6 @@ jobs:
         os: [windows-latest, ubuntu-latest, macos-latest]
         version: [10, 12, 14]
     runs-on: ${{ matrix.os }}
-    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@main
     - name: Install latest .NET 6 SDK.
@@ -37,6 +36,7 @@ jobs:
         path: artifacts/packages/Release/Shipping/*
   create_release:
     needs: build
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
@@ -58,6 +58,11 @@ jobs:
             Microsoft.EntityFrameworkCore.App.Runtime.linux-arm64
             Microsoft.EntityFrameworkCore.App.Runtime.osx-x64
             Microsoft.EntityFrameworkCore.App.Runtime.osx-arm64
+    - name: Download artifacts
+      uses: actions/download-artifact@main
+      with:
+        name: Shipping
+        path: artifacts/packages/Release/Shipping/
     - name: Push nuget Packages to GitHub Packages.
       # we must skip the symbol packages.
       run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source "github" --skip-duplicate --no-symbols
