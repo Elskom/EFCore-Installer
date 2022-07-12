@@ -61,5 +61,5 @@ jobs:
       run: dotnet nuget push **/*.nupkg -s https://nuget.pkg.github.com/${{ github.repository_owner }} -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate --no-symbols
     - uses: ncipollo/release-action@main
       with:
-        artifacts: "artifacts/packages/Release/Shipping/*.exe,artifacts/packages/Release/Shipping/*.*pkg,artifacts/packages/Release/Shipping/*.zip,artifacts/packages/Release/Shipping/*.tar.gz"
+        artifacts: "artifacts/packages/Release/Shipping/*.exe,artifacts/packages/Release/Shipping/efcore-shared-framework*.pkg,artifacts/packages/Release/Shipping/*.nupkg,artifacts/packages/Release/Shipping/efcore-shared-framework*.zip,artifacts/packages/Release/Shipping/efcore-shared-framework*.tar.gz"
         token: ${{ secrets.GITHUB_TOKEN }}
