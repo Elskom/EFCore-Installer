@@ -1,4 +1,4 @@
-name: .NET (Build Pull Request)
+name: .NET (build pull request)
 
 on: [pull_request]
 
