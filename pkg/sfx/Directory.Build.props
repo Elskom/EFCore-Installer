@@ -9,6 +9,8 @@
     <SkipValidatePackage>true</SkipValidatePackage>
     <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
     <SharedFrameworkName>Microsoft.EntityFrameworkCore.App</SharedFrameworkName>
+    <IncludeSymbols>false</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <PropertyGroup Condition="!$(MSBuildProjectName.Contains('.Ref'))">
