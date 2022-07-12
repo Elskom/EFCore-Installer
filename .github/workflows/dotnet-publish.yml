@@ -5,11 +5,6 @@ on:
     tags:
     - '*'
 
-env:
-  GITHUB_USER: Elskom
-  GITHUB_FEED: https://nuget.pkg.github.com/Elskom
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
 jobs:
   build:
     strategy:
@@ -37,6 +32,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     permissions:
+      packages: write
       contents: write
     steps:
     # To ensure that the current version being pushed does not get pruned we prune first.
@@ -62,7 +58,7 @@ jobs:
         path: artifacts/packages/Release/Shipping/
     - name: Push nuget Packages to GitHub Packages.
       # we must skip the symbol packages.
-      run: dotnet nuget push **/*.nupkg -s https://nuget.pkg.github.com/${{ github.repository_owner }} -k ${{ github.token }} --skip-duplicate --no-symbols
+      run: dotnet nuget push **/*.nupkg -s https://nuget.pkg.github.com/${{ github.repository_owner }} -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate --no-symbols
     - uses: ncipollo/release-action@main
       with:
         artifacts: "artifacts/packages/Release/Shipping/*.exe,artifacts/packages/Release/Shipping/*.*pkg,artifacts/packages/Release/Shipping/*.zip,artifacts/packages/Release/Shipping/*.tar.gz"
