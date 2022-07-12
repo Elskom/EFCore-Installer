@@ -28,6 +28,7 @@ jobs:
         del artifacts/packages/Release/Shipping/*.wixpdb
         del artifacts/packages/Release/Shipping/*-runtime-*.*
         del artifacts/packages/Release/Shipping/*-targeting-pack-*.*
+      shell: pwsh
     - name: Upload artifacts
       uses: actions/upload-artifact@main
       with:
