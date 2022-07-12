@@ -19,7 +19,7 @@ jobs:
         VERSION_MAJOR: 6
         VERSION_BAND: 4xx
 
-    - name: Restore, Build, Pack, and Push
+    - name: Restore, Build, and Pack
       uses: Elskom/build-dotnet@main
       with:
         PUSH: false
