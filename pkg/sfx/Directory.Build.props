@@ -17,6 +17,16 @@
     <OverridePackageId>$(SharedFrameworkName).Runtime.$(RuntimeIdentifier)</OverridePackageId>
     <PlatformPackageType>RuntimePack</PlatformPackageType>
     <ArchiveName>efcore-runtime</ArchiveName>
+    <!-- Work around https://github.com/dotnet/runtime/issues/71027 by adding NETCore.App last in the runtimeconfig file. -->
+    <!--
+        There is a problem with the automatically generated runtimeconfig.json
+        files where it is possible that it can cause the apphost to look for hostpolicy
+        in the wrong framework directory.
+
+        As such we must provide our own runtimeconfig file that gets copied to the
+        output directory that is manually maintained.
+    -->
+    <GenerateRuntimeConfigurationFiles>false</GenerateRuntimeConfigurationFiles>
   </PropertyGroup>
 
   <PropertyGroup Condition="$(MSBuildProjectName.Contains('.Ref'))">
@@ -25,5 +35,21 @@
     <RuntimePackProjectPath>$(SharedFrameworkName).Runtime.sfxproj</RuntimePackProjectPath>
     <ArchiveName>efcore-targeting-pack</ArchiveName>
   </PropertyGroup>
+
+  <!-- Caution: Dangerous Hack. -->
+  <Target
+    Name="CopyManualRuntimeConfigFile"
+    Condition="'$(GenerateRuntimeConfigurationFiles)' == 'false' AND !$(MSBuildProjectName.Contains('.Ref'))"
+    BeforeTargets="CopyFilesToOutputDirectory">
+    <Copy
+      SourceFiles="$(MSBuildThisFileDirectory)runtimeconfig.json"
+      SkipUnchangedFiles="true"
+      DestinationFiles="$(TargetDir)$(AssemblyName).runtimeconfig.json" />
+    <!--
+        For some reason copy creates 2 files instead of just the
+        copied file with the new name above.
+    -->
+    <Delete Files="$(TargetDir)runtimeconfig.json" />
+  </Target>
 
 </Project>
