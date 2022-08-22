@@ -4,10 +4,10 @@
     <KnownFrameworkReference Include="Microsoft.EntityFrameworkCore.App"
                              TargetFramework="net6.0"
                              RuntimeFrameworkName="Microsoft.EntityFrameworkCore.App"
-                             DefaultRuntimeFrameworkVersion="6.0.7"
-                             LatestRuntimeFrameworkVersion="6.0.7"
+                             DefaultRuntimeFrameworkVersion="6.0.8"
+                             LatestRuntimeFrameworkVersion="6.0.8"
                              TargetingPackName="Microsoft.EntityFrameworkCore.App.Ref"
-                             TargetingPackVersion="6.0.7"
+                             TargetingPackVersion="6.0.8"
                              RuntimePackNamePatterns="Microsoft.EntityFrameworkCore.App.Runtime.**RID**"
                              RuntimePackRuntimeIdentifiers="win-x86;win-x64;win-arm64;linux-x64;linux-arm;linux-arm64;osx-x64;osx-arm64"
                              IsTrimmable="true" />
