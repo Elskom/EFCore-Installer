@@ -22,6 +22,7 @@
     <EnableDefaultCompileItems Condition="'$(IsScaffoldingWithDotNetEF)' == 'true'">false</EnableDefaultCompileItems>
     <!-- Exclude source files from the None group. -->
     <DefaultItemExcludes Condition="'$(IsScaffoldingWithDotNetEF)' == 'true'">**/*.cs;**/*.vb;**/*.fs;**/*.resx</DefaultItemExcludes>
+    <EFCoreFrameworkVersion Condition="'$(EFCoreFrameworkVersion)' == ''">6.0.9</EFCoreFrameworkVersion>
   </PropertyGroup>
 
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" Condition="'$(IsScaffoldingWithDotNetEF)' == 'true' AND '$(UsingMicrosoftNETSdk)' == ''" />
@@ -36,10 +37,10 @@
     <KnownFrameworkReference Include="Microsoft.EntityFrameworkCore.App"
                              TargetFramework="net6.0"
                              RuntimeFrameworkName="Microsoft.EntityFrameworkCore.App"
-                             DefaultRuntimeFrameworkVersion="6.0.8"
-                             LatestRuntimeFrameworkVersion="6.0.8"
+                             DefaultRuntimeFrameworkVersion="$(EFCoreFrameworkVersion)"
+                             LatestRuntimeFrameworkVersion="$(EFCoreFrameworkVersion)"
                              TargetingPackName="Microsoft.EntityFrameworkCore.App.Ref"
-                             TargetingPackVersion="6.0.8"
+                             TargetingPackVersion="$(EFCoreFrameworkVersion)"
                              RuntimePackNamePatterns="Microsoft.EntityFrameworkCore.App.Runtime.**RID**"
                              RuntimePackRuntimeIdentifiers="win-x86;win-x64;win-arm64;linux-x64;linux-arm;linux-arm64;osx-x64;osx-arm64"
                              IsTrimmable="true" />
@@ -47,10 +48,10 @@
     <KnownFrameworkReference Include="Microsoft.EntityFrameworkCore.App"
                              TargetFramework="net7.0"
                              RuntimeFrameworkName="Microsoft.EntityFrameworkCore.App"
-                             DefaultRuntimeFrameworkVersion="6.0.8"
-                             LatestRuntimeFrameworkVersion="6.0.8"
+                             DefaultRuntimeFrameworkVersion="$(EFCoreFrameworkVersion)"
+                             LatestRuntimeFrameworkVersion="$(EFCoreFrameworkVersion)"
                              TargetingPackName="Microsoft.EntityFrameworkCore.App.Ref"
-                             TargetingPackVersion="6.0.8"
+                             TargetingPackVersion="$(EFCoreFrameworkVersion)"
                              RuntimePackNamePatterns="Microsoft.EntityFrameworkCore.App.Runtime.**RID**"
                              RuntimePackRuntimeIdentifiers="win-x86;win-x64;win-arm64;linux-x64;linux-arm;linux-arm64;osx-x64;osx-arm64"
                              IsTrimmable="true" />
