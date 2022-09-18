@@ -1,6 +1,7 @@
 <Project>
 
-  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" Condition="'$(IsScaffoldingWithDotNetEF)' == 'true' AND '$(UsingMicrosoftNETSdk)' == ''" />
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk.Web" Condition="'$(EFCoreSdkAddWebSdk)' != ''" />
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
 
   <ItemGroup>
     <!--
@@ -11,7 +12,7 @@
     <FrameworkReference
             Include="Microsoft.AspNetCore.App"
             IsImplicitlyDefined="true"
-            Condition="'$(DisableImplicitFrameworkReferences)' != 'true' AND !@(FrameworkReference->AnyHaveMetadataValue('Identity', 'Microsoft.AspNetCore.App'))" />
+            Condition="'$(DisableImplicitFrameworkReferences)' != 'true' AND '$(UsingMicrosoftNETSdkWeb)' == ''" />
     <FrameworkReference
             Include="Microsoft.EntityFrameworkCore.App"
             IsImplicitlyDefined="true"
@@ -20,7 +21,7 @@
             Include="Microsoft.EntityFrameworkCore.Design"
             IsImplicitlyDefined="true"
             Version="$(EFCoreFrameworkVersion)"
-            Condition="'$(DisableImplicitFrameworkReferences)' != 'true'">
+            Condition="'$(IsScaffoldingWithDotNetEF)' == 'true'">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
