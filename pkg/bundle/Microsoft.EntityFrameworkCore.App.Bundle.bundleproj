@@ -20,13 +20,15 @@
     <MacOSBundleTemplate Condition="$(RuntimeIdentifier.StartsWith('osx-'))">$(MSBuildProjectDirectory)/shared-framework-distribution-template-arm64.xml</MacOSBundleTemplate>
     <MacOSBundleIdentifierName Condition="$(RuntimeIdentifier.StartsWith('osx-'))">com.microsoft.dotnet.Microsoft.EntityFrameworkCore.App.$(ProductVersion).osx.arm64</MacOSBundleIdentifierName>
     <MacOSBundleResourcesPath Condition="$(RuntimeIdentifier.StartsWith('osx-'))">osx_resources</MacOSBundleResourcesPath>
+    <!-- Remove warnings about using central package management with multiple nuget sources. -->
+    <NoWarn>$(NoWarn);NU1507</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.DotNet.Build.Tasks.Installers" IsImplicitlyDefined="true" Version="7.0.0-beta.22322.3" Condition="$([MSBuild]::IsOSPlatform('Windows')) OR $([MSBuild]::IsOSPlatform('OSX'))">
+    <PackageReference Include="Microsoft.DotNet.Build.Tasks.Installers" Condition="$([MSBuild]::IsOSPlatform('Windows')) OR $([MSBuild]::IsOSPlatform('OSX'))">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.DotNet.Build.Tasks.Archives" IsImplicitlyDefined="true" Version="*-*"> <!-- Condition="$([MSBuild]::IsOSPlatform('Linux'))" > -->
+    <PackageReference Include="Microsoft.DotNet.Build.Tasks.Archives"> <!-- Condition="$([MSBuild]::IsOSPlatform('Linux'))" > -->
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <BundleComponentReference Include="../sfx/Microsoft.EntityFrameworkCore.App.Runtime.sfxproj">
