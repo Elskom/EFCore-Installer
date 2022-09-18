@@ -19,7 +19,7 @@
     <PackageReference
             Include="Microsoft.EntityFrameworkCore.Design"
             IsImplicitlyDefined="true"
-            Version="6.0.8"
+            Version="$(EFCoreFrameworkVersion)"
             Condition="'$(DisableImplicitFrameworkReferences)' != 'true'">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; native; contentfiles; analyzers</IncludeAssets>
