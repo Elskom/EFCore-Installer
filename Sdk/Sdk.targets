@@ -1,5 +1,7 @@
 <Project>
 
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" Condition="'$(IsScaffoldingWithDotNetEF)' == 'true' AND '$(UsingMicrosoftNETSdk)' == ''" />
+
   <ItemGroup>
     <!--
         EFCore depends on DependencyInjection which is a part of the AspNetCore framework.
@@ -14,6 +16,14 @@
             Include="Microsoft.EntityFrameworkCore.App"
             IsImplicitlyDefined="true"
             Condition="'$(DisableImplicitFrameworkReferences)' != 'true'" />
+    <PackageReference
+            Include="Microsoft.EntityFrameworkCore.Design"
+            IsImplicitlyDefined="true"
+            Version="6.0.8"
+            Condition="'$(DisableImplicitFrameworkReferences)' != 'true'">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

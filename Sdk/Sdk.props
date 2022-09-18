@@ -1,5 +1,36 @@
 <Project>
 
+  <PropertyGroup>
+    <!--
+        Sadly let's assume here that if $(Configuration) is not set then the project
+        is being scaffolded in dotnet ef.
+
+        This is a bad assumption because now we assume that the project is being scaffolded
+        when the user runs only "dotnet build" and not "dotnet build -c Debug" or
+        "dotnet build -c Release".
+    -->
+    <IsScaffoldingWithDotNetEF Condition="'$(Configuration)' == ''">true</IsScaffoldingWithDotNetEF>
+    <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)' == '' AND '$(Configuration)' != ''">$(MSBuildProjectDirectory)\..\obj\$(MSBuildProjectName)\$(Configuration)\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)' == '' AND '$(IsScaffoldingWithDotNetEF)' == 'true'">$(MSBuildProjectDirectory)\..\obj\$(MSBuildProjectName)\Debug\</BaseIntermediateOutputPath>
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
+    <MSBuildProjectExtensionsPath>$(IntermediateOutputPath)</MSBuildProjectExtensionsPath>
+    <OutputPath Condition="'$(OutputPath)' == '' AND '$(Configuration)' != ''">$(MSBuildProjectDirectory)\..\bin\$(Configuration)\</OutputPath>
+    <OutputPath Condition="'$(OutputPath)' == '' AND '$(IsScaffoldingWithDotNetEF)' == 'true'">$(MSBuildProjectDirectory)\..\bin\Debug\</OutputPath>
+    <!-- We need to disable this when we are not scaffolding. -->
+    <GenerateDependencyFile Condition="'$(GenerateDependencyFile)' == '' AND '$(IsScaffoldingWithDotNetEF)' != 'true'">false</GenerateDependencyFile>
+    <!-- When scaffolding, ensure that all source files are not set to compile by the default glob. -->
+    <EnableDefaultCompileItems Condition="'$(IsScaffoldingWithDotNetEF)' == 'true'">false</EnableDefaultCompileItems>
+    <!-- Exclude source files from the None group. -->
+    <DefaultItemExcludes Condition="'$(IsScaffoldingWithDotNetEF)' == 'true'">**/*.cs;**/*.vb;**/*.fs;**/*.resx</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" Condition="'$(IsScaffoldingWithDotNetEF)' == 'true' AND '$(UsingMicrosoftNETSdk)' == ''" />
+
+  <!-- If preveiw .NET SDK is used, suppress it's annoying message. -->
+  <PropertyGroup>
+    <SuppressNETCoreSdkPreviewMessage Condition="'$(_NETCoreSdkIsPreview)' == 'true'">true</SuppressNETCoreSdkPreviewMessage>
+  </PropertyGroup>
+
   <ItemGroup>
     <!-- .NET 6. -->
     <KnownFrameworkReference Include="Microsoft.EntityFrameworkCore.App"
