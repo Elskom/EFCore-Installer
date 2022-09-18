@@ -19,7 +19,7 @@ updates:
       # Only allow patch updates for efcore on release branches.
       - dependency-name: "Microsoft.EntityFrameworkCore.*"
         update-types: ["version-update:semver-major", "version-update:semver-minor"]
-    target-branch: "releases/6.0"
+    target-branch: "release/6.0"
     commit-message:
       prefix: "[6.0]"
       prefix-development: "[6.0]"
