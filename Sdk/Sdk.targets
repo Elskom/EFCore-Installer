@@ -1,7 +1,7 @@
 <Project>
 
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk.Web" Condition="'$(EFCoreSdkAddWebSdk)' != ''" />
-  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" Condition="'$(UsingMicrosoftNETSdkWeb)' == '' AND '$(EFCoreSdkAddWebSdk)' == ''" />
 
   <ItemGroup>
     <!--
