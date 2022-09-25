@@ -16,9 +16,15 @@ jobs:
     - name: Install latest .NET SDK.
       uses: Elskom/setup-latest-dotnet@main
       with:
-        SDK_VERSION: '7.0.100-rc.1.22431.12'
+        SDK_VERSION: '7.0.100'
         RUNTIME_VERSIONS: ''
 
+    - name: Install debuild and fpm.
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        sudo apt-get install devscripts -y
+        sudo apt-get install ruby -y
+        sudo gem install fpm
     - name: Restore, Build, and Pack
       uses: Elskom/build-dotnet@main
       with:
