@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageVersion Include="Microsoft.DotNet.Build.Tasks.Installers" Version="7.0.0-beta.22473.4" />
+    <PackageVersion Include="Microsoft.DotNet.Build.Tasks.Installers" Version="7.0.0-beta.22504.3" />
     <PackageVersion Include="Microsoft.DotNet.Build.Tasks.Archives" Version="7.0.0-beta.22503.7" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.9" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.9" />
