@@ -8,7 +8,7 @@
     <PackageVersion Include="Microsoft.DotNet.Build.Tasks.Installers" Version="7.0.0-beta.22511.2" />
     <PackageVersion Include="Microsoft.DotNet.Build.Tasks.Archives" Version="7.0.0-beta.22511.2" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.9" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.9" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.10" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.9" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Cosmos" Version="6.0.10" />
   </ItemGroup>
