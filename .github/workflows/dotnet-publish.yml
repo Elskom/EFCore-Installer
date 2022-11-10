@@ -42,10 +42,10 @@ jobs:
       contents: write
     steps:
     # To ensure that the current version being pushed does not get pruned we prune first.
-    - name: Prune all older versions.
+    - name: Prune all older versions (except latest 6.0.x servicing).
       uses: smartsquaregmbh/delete-old-packages@main
       with:
-        keep: 0
+        keep: 1
         names: |
             Microsoft.EntityFrameworkCore.Sdk
     - name: Download artifacts
