@@ -22,7 +22,7 @@
     <EnableDefaultCompileItems Condition="'$(IsScaffoldingWithDotNetEF)' == 'true'">false</EnableDefaultCompileItems>
     <!-- Exclude source files from the None group. -->
     <DefaultItemExcludes Condition="'$(IsScaffoldingWithDotNetEF)' == 'true'">**/*.cs;**/*.vb;**/*.fs;**/*.resx</DefaultItemExcludes>
-    <EFCoreFrameworkVersion Condition="'$(EFCoreFrameworkVersion)' == ''">6.0.10</EFCoreFrameworkVersion>
+    <EFCoreFrameworkVersion Condition="'$(EFCoreFrameworkVersion)' == ''">7.0.0</EFCoreFrameworkVersion>
   </PropertyGroup>
 
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk.Web" Condition="'$(UsingMicrosoftNETSdkWeb)' == '' AND '$(EFCoreSdkAddWebSdk)' != ''" />
