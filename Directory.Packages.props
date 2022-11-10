@@ -7,7 +7,7 @@
   <ItemGroup>
     <PackageVersion Include="Microsoft.DotNet.Build.Tasks.Installers" Version="7.0.0-beta.22558.4" />
     <PackageVersion Include="Microsoft.DotNet.Build.Tasks.Archives" Version="7.0.0-beta.22514.3" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Cosmos" Version="7.0.0" />
