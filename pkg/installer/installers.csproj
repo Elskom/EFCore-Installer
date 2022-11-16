@@ -87,6 +87,8 @@
     </BundleRIDReference>
   </ItemGroup>
 
+  <Target Name="Build" DependsOnTargets="GenerateInstallers" Condition="$([MSBuild]::IsOSPlatform('Linux'))" />
+
   <Target Name="BuildInstallerProjects" BeforeTargets="Build">
     <Message Importance="high" Text="Building Installers for Windows." Condition="$([MSBuild]::IsOSPlatform('Windows'))" />
     <Message Importance="high" Text="Building Installers for Linux." Condition="$([MSBuild]::IsOSPlatform('Linux'))" />
