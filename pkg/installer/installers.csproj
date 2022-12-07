@@ -13,6 +13,8 @@
     <PackageRuntimeIdentifiers Condition="$([MSBuild]::IsOSPlatform('OSX'))">osx-x64;osx-arm64</PackageRuntimeIdentifiers> -->
     <!-- Remove warnings about using central package management with multiple nuget sources. -->
     <NoWarn>$(NoWarn);NU1507</NoWarn>
+    <BuildDebPackage Condition="$([MSBuild]::IsOSPlatform('Linux'))">true</BuildDebPackage>
+    <BuildRpmPackage Condition="$([MSBuild]::IsOSPlatform('Linux'))">true</BuildRpmPackage>
   </PropertyGroup>
 
   <ItemGroup>
@@ -58,13 +60,19 @@
     <!-- Use these when OS is Linux. -->
     <BundleRIDReference Include="../bundle/Microsoft.EntityFrameworkCore.App.Bundle.bundleproj">
       <AdditionalProperties>Configuration=$(Configuration);RuntimeIdentifier=linux-x64</AdditionalProperties>
+      <Targets>GenerateInstallers</Targets>
     </BundleRIDReference>
     <BundleRIDReference Include="../bundle/Microsoft.EntityFrameworkCore.App.Bundle.bundleproj">
       <AdditionalProperties>Configuration=$(Configuration);RuntimeIdentifier=linux-arm</AdditionalProperties>
+      <Targets>GenerateInstallers</Targets>
     </BundleRIDReference>
     <BundleRIDReference Include="../bundle/Microsoft.EntityFrameworkCore.App.Bundle.bundleproj">
       <AdditionalProperties>Configuration=$(Configuration);RuntimeIdentifier=linux-arm64</AdditionalProperties>
+      <Targets>GenerateInstallers</Targets>
     </BundleRIDReference>
+    <PackageReference Include="Microsoft.DotNet.Build.Tasks.Installers">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup Condition="$([MSBuild]::IsOSPlatform('OSX'))">
@@ -78,6 +86,8 @@
       <Targets>GenerateInstallers</Targets>
     </BundleRIDReference>
   </ItemGroup>
+
+  <Target Name="Build" DependsOnTargets="GenerateInstallers" Condition="$([MSBuild]::IsOSPlatform('Linux'))" />
 
   <Target Name="BuildInstallerProjects" BeforeTargets="Build">
     <Message Importance="high" Text="Building Installers for Windows." Condition="$([MSBuild]::IsOSPlatform('Windows'))" />

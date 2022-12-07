@@ -16,7 +16,7 @@
     <PackageReference Include="Microsoft.DotNet.Build.Tasks.Archives" Condition="$(RuntimeIdentifier.StartsWith('linux-')) AND $([MSBuild]::IsOSPlatform('Linux'))">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.DotNet.Build.Tasks.Installers" Condition="$([MSBuild]::IsOSPlatform('Windows')) OR $([MSBuild]::IsOSPlatform('OSX'))">
+    <PackageReference Include="Microsoft.DotNet.Build.Tasks.Installers"> <!-- Condition="$([MSBuild]::IsOSPlatform('Windows')) OR $([MSBuild]::IsOSPlatform('OSX'))"> -->
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>

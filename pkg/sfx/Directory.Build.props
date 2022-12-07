@@ -9,7 +9,7 @@
     <SkipValidatePackage>true</SkipValidatePackage>
     <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
     <SharedFrameworkName>Microsoft.EntityFrameworkCore.App</SharedFrameworkName>
-    <IncludeSymbols>false</IncludeSymbols>
+    <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <!-- Remove warnings about using central package management with multiple nuget sources. -->
     <NoWarn>$(NoWarn);NU1507</NoWarn>
